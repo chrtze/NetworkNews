@@ -9,11 +9,18 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
+import Header from '~/routes/header'
+import Footer from '~/routes/footer'
+
 import tailwindStylesheetUrl from "./styles/tailwind.css";
+import globalUrl from '~/styles/global.css'
 import { getUser } from "./session.server";
 
 export const links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: tailwindStylesheetUrl }];
+  return [
+    { rel: 'stylesheet', href: globalUrl },
+    { rel: "stylesheet", href: tailwindStylesheetUrl }
+  ];
 };
 
 export const meta: MetaFunction = () => ({
@@ -36,10 +43,12 @@ export default function App() {
         <Links />
       </head>
       <body className="h-full">
+        <Header />
         <Outlet />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
+        <Footer />
       </body>
     </html>
   );
