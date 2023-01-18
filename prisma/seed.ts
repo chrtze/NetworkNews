@@ -85,6 +85,25 @@ async function seed() {
     });
   }
 
+  const topics = [
+    {
+      slug: "space",
+      title: "Space",
+    },
+    {
+      slug: "contracts",
+      title: "Contracts",
+    },
+  ];
+
+  for (const topic of topics) {
+    await prisma.topic.upsert({
+      where: { slug: topic.slug },
+      update: topic,
+      create: topic,
+    });
+  }
+
   console.log(`Database has been seeded. 🌱`);
 }
 

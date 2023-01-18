@@ -9,14 +9,16 @@ const sourceHandleStyleB: CSSProperties = {
 };
 
 const CustomNode: FC<NodeProps> = ({ data, xPos, yPos }) => {
+  const slug = data.label.toLowerCase();
+
   return (
     <>
       <Handle type="target" position={Position.Top} />
       <div className='text-center'>
         <div>
-          Label: <strong>{data.label}</strong>
+          <strong>{data.label}</strong>
         </div>
-        <Link to="/">View</Link>
+        <Link to={"/topics/graph/" + slug}>View</Link>
       </div>
 
       <Handle

@@ -5,11 +5,11 @@ import ReactFlow, {
   addEdge, 
   Controls, 
   Background, 
-  ConnectionLineType, 
-  ReactFlowProvider 
+  ConnectionLineType,  
 } from 'reactflow';
 import type { Connection, Node, Edge } from 'reactflow';
 import dagre from 'dagre';
+import { Outlet } from "@remix-run/react";
 
 
 import CustomNode from './CustomNode';
@@ -17,7 +17,6 @@ import { initialNodes, initialEdges } from './Nodes-Edges';
 
 import reactFlowStyles from 'reactflow/dist/style.css';
 import styles from '~/styles/flow.css';
-import '~/styles/provider.css'
 
 const dagreGraph = new dagre.graphlib.Graph();
 dagreGraph.setDefaultEdgeLabel(() => ({}));
@@ -64,7 +63,6 @@ const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
 
 export async function onNodeClick(event, node) {
   console.log('click node', event, node);
-  //return redirect("/");
 }
 
 const nodeTypes = {
@@ -97,21 +95,26 @@ export default function Flow() {
     [nodes, edges]
   );
   return (
-
-          <ReactFlow
-            nodes={nodes}
-            onNodesChange={onNodesChange}
-            edges={edges}
-            onEdgesChange={onEdgesChange}
-            onConnect={onConnect}
-            nodeTypes={nodeTypes}
-            onNodeClick= { onNodeClick }
-            fitView
-          >
-          <Controls />
-          <Background gap={16} />
-          </ReactFlow>
-
+  <div className="app flex flex-row">
+    <div className="basis-3/4">
+      <ReactFlow
+        nodes={nodes}
+        onNodesChange={onNodesChange}
+        edges={edges}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+        nodeTypes={nodeTypes}
+        onNodeClick= { onNodeClick }
+        fitView
+        >
+        <Controls />
+        <Background gap={16} />
+        </ReactFlow>
+    </div>
+    <div className='basis-1/4 bg-zinc-800'>
+      <Outlet />
+    </div>
+  </div>
   );
 }
 
@@ -121,4 +124,3 @@ export function links() {
     { rel: 'stylesheet', href: styles },
   ];
 }
-

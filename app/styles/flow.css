@@ -1,6 +1,5 @@
 .app {
   height: 92%;
-  width: 80%;
 }
 
 .app-header {
@@ -12,8 +11,8 @@
 }
 
 .react-flow {
-  --bg-color: rgb(56, 56, 56);
-  --text-color: rgb(243, 244, 246);
+  --bg-color: #27272a;
+  --text-color: #f3f4f6;
   --node-border-radius: 10px;
   --node-box-shadow: 10px 0 15px rgba(42, 138, 246, 0.3), -10px 0 15px rgba(233, 42, 103, 0.3);
   background-color: var(--bg-color);
