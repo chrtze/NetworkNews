@@ -70,3 +70,13 @@
   height: 100%;
 }
 
+.react-flow__node.circle {
+  border-radius: 100%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  fontweight: 700;
+}
+

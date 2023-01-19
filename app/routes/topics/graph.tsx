@@ -7,7 +7,8 @@ import ReactFlow, {
   Background, 
   ConnectionLineType,
   useReactFlow,
-  ReactFlowProvider
+  ReactFlowProvider,
+  Panel
 } from 'reactflow';
 
 import type { Connection, Node, Edge } from 'reactflow';
@@ -107,6 +108,17 @@ function Flow() {
   nodesDraggable={false}
   fitView
   >
+  {/* <Panel position="top-left" className='basis-1'>
+    <div className="rounded-lg m-1 border-dotted border-2 border-sky-500 text-3xl text-center font-extrabold bg-zinc-800">
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-violet-500">
+          How can i help?
+        </span>
+    </div>
+    <div className="rounded-lg m-1 border-dotted border-2 border-sky-500 text-3xl text-center font-extrabold bg-zinc-800">
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-violet-500">
+        </span>
+    </div>
+  </Panel> */}
   <div className="controls">
     <button onClick={() => onLayout('TB')}>vertical layout</button>
     <button onClick={() => onLayout('LR')}>horizontal layout</button>
