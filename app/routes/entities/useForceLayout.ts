@@ -54,7 +54,10 @@ function useForceLayout({ strength = -1000, distance = 150 }: UseForceLayoutOpti
       )
       .force('x', forceX().x(0).strength(0.08))
       .force('y', forceY().y(0).strength(0.08))
-      .on('tick', setNodes(simulationNodes.map((node) => ({id: node.id, data: node.data, position: { x: node.x, y: node.y }}))));
+      .on('tick', () => {
+        setNodes(simulationNodes.map((node) => ({id: node.id, data: node.data, position: { x: node.x, y: node.y }}))
+        );
+      });
 
     return () => {
       simulation.stop();
