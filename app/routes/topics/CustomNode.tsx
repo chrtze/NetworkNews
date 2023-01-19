@@ -20,18 +20,9 @@ const CustomNode: FC<NodeProps> = ({ data, xPos, yPos }) => {
         </div>
         <Link to={"/topics/graph/" + slug}>View</Link>
       </div>
-
       <Handle
         type="source"
         position={Position.Bottom}
-        id="a"
-        style={sourceHandleStyleA}
-      />
-      <Handle
-        type="source"
-        position={Position.Bottom}
-        id="b"
-        style={sourceHandleStyleB}
       />
     </>
   );

@@ -5,15 +5,19 @@ import ReactFlow, {
   addEdge, 
   Controls, 
   Background, 
-  ConnectionLineType,  
+  ConnectionLineType,
+  useReactFlow,
+  ReactFlowProvider
 } from 'reactflow';
+
 import type { Connection, Node, Edge } from 'reactflow';
 import dagre from 'dagre';
 import { Outlet } from "@remix-run/react";
 
 
 import CustomNode from './CustomNode';
-import { initialNodes, initialEdges } from './Nodes-Edges';
+import { initialNodes } from './nodes';
+import { initialEdges } from './edges'
 
 import reactFlowStyles from 'reactflow/dist/style.css';
 import styles from '~/styles/flow.css';
@@ -21,11 +25,11 @@ import styles from '~/styles/flow.css';
 const dagreGraph = new dagre.graphlib.Graph();
 dagreGraph.setDefaultEdgeLabel(() => ({}));
 
-const nodeWidth = 172;
-const nodeHeight = 36;
 
-const getLayoutedElements = (nodes, edges, direction = 'TB') => {
-  const isHorizontal = direction === 'LR';
+const getLayoutedElements = (nodes, edges, direction = 'LR') => {
+  const isVertical = direction === 'TB';
+  const nodeWidth = isVertical ? 110 : 200;
+  const nodeHeight = isVertical ? 60: 20;
   dagreGraph.setGraph({ rankdir: direction });
 
   nodes.forEach((node) => {
@@ -40,8 +44,8 @@ const getLayoutedElements = (nodes, edges, direction = 'TB') => {
 
   nodes.forEach((node) => {
     const nodeWithPosition = dagreGraph.node(node.id);
-    node.targetPosition = isHorizontal ? 'left' : 'top';
-    node.sourcePosition = isHorizontal ? 'right' : 'bottom';
+    node.targetPosition = isVertical ? 'top' : 'left';
+    node.sourcePosition = isVertical ? 'bottom' : 'right';
 
     // We are shifting the dagre node position (anchor=center center) to the top left
     // so it matches the React Flow node anchor point (top left).
@@ -69,7 +73,7 @@ const nodeTypes = {
   custom: CustomNode,
 };
 
-export default function Flow() {
+function Flow() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
@@ -81,37 +85,47 @@ export default function Flow() {
     []
   );
 
-  const onLayout = useCallback(
-    (direction) => {
-      const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
-        nodes,
-        edges,
-        direction
-      );
+  const { setViewport } = useReactFlow();
 
+  const onLayout = useCallback(
+    (direction) => { const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(nodes,edges,direction);
       setNodes([...layoutedNodes]);
       setEdges([...layoutedEdges]);
-    },
-    [nodes, edges]
+      const isVertical = direction === 'TB';
+      isVertical ? setViewport({ x: -200, y: 300, zoom: 0.7 }, { duration: 1100 }) : setViewport({ x: 300, y: 50, zoom: 0.6 }, { duration: 1100 });
+    }, [nodes, edges]);
+
+  return (
+  <ReactFlow
+  nodes={nodes}
+  onNodesChange={onNodesChange}
+  edges={edges}
+  onEdgesChange={onEdgesChange}
+  onConnect={onConnect}
+  nodeTypes={nodeTypes}
+  onNodeClick= { onNodeClick }
+  nodesDraggable={false}
+  fitView
+  >
+  <div className="controls">
+    <button onClick={() => onLayout('TB')}>vertical layout</button>
+    <button onClick={() => onLayout('LR')}>horizontal layout</button>
+  </div>
+  <Controls />
+  <Background gap={16} />
+</ReactFlow>
   );
+}
+
+export default function Graph() {
   return (
   <div className="app flex flex-row">
-    <div className="basis-3/4">
-      <ReactFlow
-        nodes={nodes}
-        onNodesChange={onNodesChange}
-        edges={edges}
-        onEdgesChange={onEdgesChange}
-        onConnect={onConnect}
-        nodeTypes={nodeTypes}
-        onNodeClick= { onNodeClick }
-        fitView
-        >
-        <Controls />
-        <Background gap={16} />
-        </ReactFlow>
+    <div className="layoutflow">
+      <ReactFlowProvider>
+        <Flow/>
+      </ReactFlowProvider>
     </div>
-    <div className='basis-1/4 bg-zinc-800'>
+    <div className='basis-1/6 bg-zinc-800'>
       <Outlet />
     </div>
   </div>
