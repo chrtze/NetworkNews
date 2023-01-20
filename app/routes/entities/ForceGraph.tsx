@@ -1,4 +1,4 @@
-import React, { useCallback, MouseEvent, useState } from 'react';
+import React, { useCallback } from 'react';
 import ReactFlow, {
   Background,
   Panel,
@@ -8,17 +8,17 @@ import ReactFlow, {
   useEdgesState,
   useReactFlow,
   NodeOrigin,
-  NodeMouseHandler,
   addEdge,
   OnConnect,
   Controls
 } from 'reactflow';
+
 import 'reactflow/dist/style.css';
 
 import useForceLayout from './useForceLayout';
 import { initialNodes, initialEdges } from './initialElements';
 
-// import styles from '~/styles/forceLayout.css';
+import styles from '~/styles/forceLayout.css';
 
 const proOptions: ProOptions = { account: 'paid-pro', hideAttribution: true };
 
