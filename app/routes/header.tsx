@@ -8,7 +8,7 @@ export default function Header() {
             <div className="flex-grow items-center">
                 <Link className="text-xl pr-2 font-semibold" to="/">Network News</Link>
                 <Link className="nav-link opacity-60 hover:opacity-80 focus:opacity-80 p-0" to="/topics/graph">Topics</Link>
-                <Link className="nav-link opacity-60 hover:opacity-80 focus:opacity-80 p-0" to="/entities/graph">Entities</Link>
+                <Link className="nav-link opacity-60 hover:opacity-80 focus:opacity-80 p-0" to="/entities">Entities</Link>
             </div>
         </div>
     </nav>
