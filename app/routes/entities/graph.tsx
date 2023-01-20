@@ -18,7 +18,7 @@ import 'reactflow/dist/style.css';
 import useForceLayout from './useForceLayout';
 import { initialNodes, initialEdges } from './initialElements';
 
-import styles from '~/styles/forceLayout.css';
+// import styles from '~/styles/forceLayout.css';
 
 const proOptions: ProOptions = { account: 'paid-pro', hideAttribution: true };
 

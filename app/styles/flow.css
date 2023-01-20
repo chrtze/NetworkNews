@@ -17,6 +17,7 @@
   --node-box-shadow: 10px 0 15px rgba(42, 138, 246, 0.3), -10px 0 15px rgba(233, 42, 103, 0.3);
   background-color: var(--bg-color);
   color: var(--text-color);
+  font-size: 12px;
 }
 
 .react-flow__edge {
@@ -41,17 +42,6 @@
   color: var(--text-color);
 }
 
-.react-flow {
-  font-size: 12px;
-}
-
-.react-flow__node-custom {
-  border: 1px solid #555;
-  padding: 10px;
-  width: 200px;
-  border-radius: 5px;
-}
-
 .layoutflow .controls {
   position: absolute;
   right: 10px;
@@ -60,7 +50,7 @@
   font-size: 12px;
 }
 
-.layoutflow .controls button:first-child {
+.layoutflow .controls button {
   margin-right: 10px;
 }
 

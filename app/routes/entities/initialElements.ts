@@ -1,5 +1,5 @@
 import { Edge, Node } from 'reactflow';
-import styles from '~/styles/forceLayout.css';
+import 'reactflow/dist/style.css';
 
 export const initialNodes: Node[] = [
   {
