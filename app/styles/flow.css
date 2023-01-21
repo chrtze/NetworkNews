@@ -11,7 +11,7 @@
 }
 
 .react-flow {
-  --bg-color: #27272a;
+  --bg-color: #000;
   --text-color: #f3f4f6;
   --node-border-radius: 10px;
   --node-box-shadow: 10px 0 15px rgba(42, 138, 246, 0.3), -10px 0 15px rgba(233, 42, 103, 0.3);
@@ -60,13 +60,79 @@
   height: 100%;
 }
 
-.react-flow__node.circle {
-  border-radius: 100%;
-  width: 80px;
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  fontweight: 700;
+.annotationTopLeft {
+  margin-top: 8px;
+  background: rgb(17, 17, 17);
+  border-radius: 50px;
+  text-align: Center;
+  line-height: 2;
+  width: 225px;
+  border-width: 1px;
+  border-color: #0ea5e9;
+  font-size: 15px;
 }
 
+.annotationTopRight {
+  margin-top: 48px;
+  margin-right: 45px;
+  background: rgb(17, 17, 17);
+  border-radius: 50px;
+  text-align: Center;
+  line-height: 2;
+  width: 225px;
+  border-width: 1px;
+  border-color: #0ea5e9;
+  font-size: 15px;
+}
+
+.annotationBottomLeft {
+  margin-left: 60px;
+  padding-right: 10px;
+  background: rgb(17, 17, 17);
+  border-radius: 10px;
+  text-align: Right;
+  line-height: 2;
+  width: 75px;
+  border-width: 1px;
+  border-color: #0ea5e9;
+  font-size: 15px;
+}
+
+.AI-Pannel {
+  margin-top: 50px;
+  background: rgb(17, 17, 17);
+  border-radius: 12px;
+  text-align: Left;
+  width: 400px;
+  font-size: 15px;
+  line-height: 2;
+}
+
+.pointyThing {
+  margin-top: 30px;
+  margin-left: 455px;
+  background: rgb(17, 17, 17);
+  border-radius: 50px;
+  text-align: Center;
+  line-height: 2;
+  width: 300px;
+  border-width: 1px;
+  border-color: #0ea5e9;
+  font-size: 15px;
+}
+
+.upRightArrow {
+  margin-top: 60px;
+  margin-left: 425px;
+}
+
+.flowButton {
+  background: rgb(17, 17, 17);
+  border-radius: 50px;
+  text-align: Center;
+  line-height: 2;
+  width: 130px;
+  border-width: 1px;
+  border-color: #0ea5e9;
+  font-size: 13px;
+}

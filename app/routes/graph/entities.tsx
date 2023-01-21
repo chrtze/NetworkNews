@@ -1,8 +1,7 @@
-// renders the entities outlet
-import { Outlet } from "@remix-run/react";
+import ReactFlowWrapper from "./entities/ForceGraph";
 
-export default function entities() {
-    return (
-    <Outlet />
-    );
-  }
+export default function Flow() {
+  return (
+    <ReactFlowWrapper/>
+  );
+}

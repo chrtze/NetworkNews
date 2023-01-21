@@ -1,10 +1,5 @@
-import { redirect } from "@remix-run/node";
-
-import ReactFlowWrapper from "./ForceGraph";
-
-export default function Flow() {
+export default function EntityIndex() {
   return (
-    <ReactFlowWrapper/>
+    <h1>Index Filler</h1>
   );
 }
-
