@@ -23,7 +23,6 @@ import { darkTheme, lightTheme } from '~/styles/DLTheme';
 import reactFlowStyles from 'reactflow/dist/style.css';
 import styles from '~/styles/flow.css';
 
-
 const dagreGraph = new dagre.graphlib.Graph();
 dagreGraph.setDefaultEdgeLabel(() => ({}));
 
@@ -155,7 +154,7 @@ function Flow() {
   );
 }
 
-export default function Graph() {
+export default function Topics() {
   return (
   <div className="app flex flex-row">
     <div className="layoutflow">
@@ -164,7 +163,11 @@ export default function Graph() {
       </ReactFlowProvider>
     </div>
     <div className='basis-1/6 bg-zinc-800'>
-      <Outlet />
+      <div className="rounded-lg m-3 border-dotted border-2 border-sky-500 text-3xl text-center font-extrabold bg-zinc-800">
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-violet-500">
+          Click a topic to see more information
+        </span>
+      </div>
     </div>
   </div>
   );
